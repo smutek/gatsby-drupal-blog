@@ -71,3 +71,7 @@ yarn-error.log
 # secrets
 .env*
 !.env.sample
+
+# IDE / System
+.Ds_Store
+.idea
