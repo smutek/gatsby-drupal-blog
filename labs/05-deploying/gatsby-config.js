@@ -6,7 +6,7 @@ require(`dotenv`).config({
 module.exports = {
   siteMetadata: {
     // TODO: add your siteUrl
-    siteUrl: `https://your-site-name.netlify.com`,
+    siteUrl: `https://angry-liskov-131154.netlify.com`,
     title: `Gatsby Drupal Blog`,
     description: `An amazing blog built in the Gatsby + Drupal workshop at DrupalCamp 2019`,
     author: `@schaudustin`,
