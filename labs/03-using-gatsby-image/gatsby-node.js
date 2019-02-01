@@ -1,11 +1,11 @@
-const path = require('path')
+const path = require('path');
 
 /*
  * This adds a slug resolution field to all articles and pages
  * this is useful for linking and querying
  */
 exports.onCreateNode = function onCreateNode({ actions, node }) {
-  const { createNodeField } = actions
+  const { createNodeField } = actions;
 
   if (node.internal.type === 'node__article' || node.internal.type === 'node__page') {
     createNodeField({
@@ -14,10 +14,10 @@ exports.onCreateNode = function onCreateNode({ actions, node }) {
       value: node.path.alias
     })
   }
-}
+};
 
 exports.createPages = async function createPages({ actions, graphql }) {
-  const { createPage } = actions
+  const { createPage } = actions;
 
   const result = await graphql(`
     {
@@ -37,7 +37,7 @@ exports.createPages = async function createPages({ actions, graphql }) {
         throw res.errors
       }
       return res.data
-    })
+    });
 
   const articleTemplate = path.resolve('src/templates/article.js')
 
@@ -48,6 +48,6 @@ exports.createPages = async function createPages({ actions, graphql }) {
       context: {
         slug: node.fields.slug
       }
-    })
+    });
   })
-}
+};
