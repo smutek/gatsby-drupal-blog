@@ -6,7 +6,7 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 
 export default function BlogPost({ data }) {
-  const { article, site } = data
+  const { article } = data
   const { featuredImage } = article.relationships.field_image.relationships.field_media_image.localFile.childImageSharp
   return (
     <Layout>
@@ -17,7 +17,7 @@ export default function BlogPost({ data }) {
           [
             {
               property: 'og:image',
-              content: `${site.siteMetadata.siteUrl}${featuredImage.src}`
+              content: `${featuredImage.src}` // TODO: prefix with siteUrl
             },
             {
               property: 'og:image:height',
@@ -38,11 +38,8 @@ export default function BlogPost({ data }) {
 
 export const blogPostQuery = graphql`
   query GetBlogPostBySlug($slug: String!) {
-    site {
-      siteMetadata {
-        siteUrl
-      }
-    }
+    # TODO: add siteUrl query
+
     article: nodeArticle(fields:{slug:{eq:$slug}}) {
       relationships {
         field_image {
